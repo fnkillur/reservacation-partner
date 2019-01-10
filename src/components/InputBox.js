@@ -9,13 +9,18 @@ class InputBox extends Component {
             placeholder: props.placeholder || '',
             className: props.className || 'input basic',
             label: props.label || '',
+            name: props.name || ''
         }
     }
+
+    handleChange = (e) => {
+        this.props.onChange(e);
+    };
 
     render() {
         return (
             <div className={'tag-cover'}>
-                <input className={this.state.className} type={this.state.type} placeholder={this.state.placeholder}/>
+                <input onChange={this.handleChange} name={this.state.name} className={this.state.className} type={this.state.type} placeholder={this.state.placeholder}/>
             </div>
         );
     }
