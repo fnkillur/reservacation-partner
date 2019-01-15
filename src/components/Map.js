@@ -68,7 +68,7 @@ class Map extends Component {
     render() {
         return (
             <div>
-                <div id="map" style={{marginBottom: '15px', height: '500px', display: this.props.address || 'none'}}/>
+                <div id="map" style={{marginBottom: '15px', height: '500px'}}/>
             </div>
         )
     };

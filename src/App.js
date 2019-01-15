@@ -5,6 +5,7 @@ import Button from "./components/Button";
 import DaumPostcode from "./components/DaumPostcode";
 import Map from "./components/Map";
 import ReactFullpage from '@fullpage/react-fullpage';
+import coverImage from './asset/jeju-cover.jpg';
 
 class App extends Component {
     constructor(props) {
@@ -44,7 +45,7 @@ class App extends Component {
         return (
             <div id={'app'} className={'app'}>
                 <header className={'header'}>
-                    <h1>제주도예약 - For Partner</h1>
+                    <h1>Reservacation For Partner</h1>
                 </header>
 
                 <article ref={ref => {
@@ -55,7 +56,7 @@ class App extends Component {
                             return (
                                 <ReactFullpage.Wrapper>
                                     <section className={'section step1'}>
-
+                                        <img width={'100%'} src={coverImage}/>
                                     </section>
                                     <section className={'section step2'}>
 

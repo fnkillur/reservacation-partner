@@ -1,21 +1,35 @@
 .app {
   & .header {
     position: fixed;
-    width: 800px;
-    margin: auto;
     padding: 20px 15px;
     z-index: 1;
+    width: 100%;
+    h1 {
+      width: 950px;
+      margin: auto;
+      color: white;
+      font-family: fantasy;
+    }
   }
   & .description {
     .address-field {
       border: 1px solid;
-      margin: 0 15px;
       padding: 15px;
       font-size: 18px;
       background: white;
     }
     .step1 {
-      background: red;
+      background: linear-gradient(to top, #4ad1ce 50%, #ffcbc0 50%);
+      .cover-image {
+        z-index: 2;
+        background-image: url("./asset/jeju-cover.jpg");
+        -webkit-background-size: 100% 500px;
+        background-size: 100% 500px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+      }
+
     }
     .step2 {
       background: green;
@@ -24,7 +38,7 @@
       background-image: url('./asset/shaking-hands-2499629_1920.jpg');
       background-size: 100% 100%;
       .formFields {
-        width: 800px;
+        width: 500px;
         margin: 0 auto;
       }
     }

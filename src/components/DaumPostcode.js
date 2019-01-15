@@ -101,7 +101,6 @@ class DaumPostcode extends React.Component {
                     width: this.state.width,
                     height: this.state.height,
                     display: this.state.display,
-                    margin: '0 15px',
                     ...style,
                 }}
                 {...rest}
