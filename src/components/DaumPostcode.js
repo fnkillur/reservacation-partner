@@ -98,10 +98,10 @@ class DaumPostcode extends React.Component {
             <div
                 ref={(div) => { this.wrap = div; }}
                 style={{
+                    width: this.state.width,
                     height: this.state.height,
                     display: this.state.display,
-                    margin: '15px',
-                    border: '1px solid',
+                    margin: '0 15px',
                     ...style,
                 }}
                 {...rest}

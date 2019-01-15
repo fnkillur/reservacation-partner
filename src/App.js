@@ -4,12 +4,15 @@ import InputBox from "./components/InputBox";
 import Button from "./components/Button";
 import DaumPostcode from "./components/DaumPostcode";
 import Map from "./components/Map";
+import ReactFullpage from '@fullpage/react-fullpage';
 
 class App extends Component {
     constructor(props) {
         super(props);
+        this.myRef = null;
         this.state = {
-            address: ''
+            address: '',
+            showMe: false
         }
     }
 
@@ -26,28 +29,59 @@ class App extends Component {
             }
             fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
         }
-        this.setState({address: fullAddress});
-        console.log(fullAddress);  // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
+        this.setState({address: fullAddress, showMe: !this.state.showMe});
     };
 
     onChange = (e) => {
         console.log(e);
     };
 
+    toggleShow = () => {
+        this.setState({showMe: !this.state.showMe});
+    };
+
     render() {
         return (
-            <div className={'app'}>
+            <div id={'app'} className={'app'}>
                 <header className={'header'}>
                     <h1>제주도예약 - For Partner</h1>
                 </header>
-                <form>
-                    <Map address={this.state.address}/>
-                    <DaumPostcode onComplete={this.handleAddress}/>
-                    <InputBox onChange={this.onChange} name={'company'} placeholder={'상호명입력'}/>
-                    <InputBox onChange={this.onChange} name={'tel'} placeholder={'전화번호입력'} type={'tel'}/>
-                    <InputBox name={'name'} placeholder={'성함'}/>
-                    <Button type={'submit'} value={'등록'}/>
-                </form>
+
+                <article ref={ref => {
+                    this.myRef = ref
+                }} className={'description'}>
+                    <ReactFullpage
+                        render={({state, fullpageApi}) => {
+                            return (
+                                <ReactFullpage.Wrapper>
+                                    <section className={'section step1'}>
+
+                                    </section>
+                                    <section className={'section step2'}>
+
+                                    </section>
+                                    <section className={'section step3'}>
+                                        <form className={'formFields'}>
+                                            {
+                                                !this.state.address || <Map address={this.state.address}/>
+                                            }
+                                            {
+                                                this.state.showMe ? <DaumPostcode onComplete={this.handleAddress}/> :
+                                                    <div className={'address-field'} onClick={this.toggleShow}>주소입력</div>
+                                            }
+                                            <InputBox onChange={this.onChange} name={'company'} placeholder={'상호명입력'}/>
+                                            <InputBox onChange={this.onChange} name={'tel'} placeholder={'전화번호입력'}
+                                                      type={'tel'}/>
+                                            <InputBox onChange={this.onChange} name={'name'} placeholder={'성함'}/>
+                                            <Button type={'submit'} value={'등록'}/>
+                                        </form>
+                                    </section>
+                                </ReactFullpage.Wrapper>
+                            );
+                        }}
+                    />
+
+                </article>
             </div>
         );
     }

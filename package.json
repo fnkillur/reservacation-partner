@@ -115,6 +115,7 @@
     ]
   },
   "devDependencies": {
+    "@fullpage/react-fullpage": "^0.1.10",
     "prop-types": "latest"
   }
 }

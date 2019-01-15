@@ -11,7 +11,6 @@ class Map extends Component {
         this.state = {
             address: this.props.address
         };
-        console.log(this.state);
     }
 
 
@@ -44,9 +43,9 @@ class Map extends Component {
 
     };
 
-    showPosition = (position) => {
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude;
+    showPosition = (position, status) => {
+        let latitude = position[0].y;
+        let longitude = position[0].x;
         let mapContainer = document.getElementById('map'),
             mapOption = {
                 center: new daum.maps.LatLng(latitude, longitude),
@@ -62,27 +61,14 @@ class Map extends Component {
     componentDidMount() {
         var geocoder = new daum.maps.services.Geocoder();
 
-        var callback = function(result, status) {
-            if (status === daum.maps.services.Status.OK) {
-                console.log(result);
-            }
-        };
-
-        geocoder.addressSearch(this.state.address, callback);
-
-        if (navigator.geolocation) {
-            console.log(navigator.geolocation);
-            navigator.geolocation.getCurrentPosition(this.showPosition);
-        } else {
-            alert('허용하지 않으면 이 서비스 사용에 제한됩니다.');
-        }
+        geocoder.addressSearch(this.state.address, this.showPosition);
     }
 
 
     render() {
         return (
             <div>
-                <div id="map" style={{margin: '15px', height: '300px', display: this.props.address || 'none'}}/>
+                <div id="map" style={{marginBottom: '15px', height: '500px', display: this.props.address || 'none'}}/>
             </div>
         )
     };
