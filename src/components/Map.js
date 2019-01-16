@@ -13,12 +13,11 @@ class Map extends Component {
         };
     }
 
-
-    renderMarket = () => {
+    renderMarket = (position) => {
         //positions에는 데이터 넣는부분. DB에서 가지고오면 됨.
         let positions = [
             {
-                latlng: new daum.maps.LatLng(33.450705, 126.570677)
+                latlng: new daum.maps.LatLng(position[0].y, position[0].x)
             }
         ];
 
@@ -29,7 +28,6 @@ class Map extends Component {
             });
 
             let overlay = new daum.maps.CustomOverlay({
-                content: '컨텐츠',
                 map: map,
                 position: marker.getPosition()
             });
@@ -40,12 +38,12 @@ class Map extends Component {
                 });
             })(marker, overlay);
         }
-
     };
 
     showPosition = (position, status) => {
         let latitude = position[0].y;
         let longitude = position[0].x;
+        this.props.changePosition(position);
         let mapContainer = document.getElementById('map'),
             mapOption = {
                 center: new daum.maps.LatLng(latitude, longitude),
@@ -54,7 +52,7 @@ class Map extends Component {
 
         map = new daum.maps.Map(mapContainer, mapOption);
 
-        this.renderMarket();
+        this.renderMarket(position);
     };
 
 
@@ -62,13 +60,13 @@ class Map extends Component {
         var geocoder = new daum.maps.services.Geocoder();
 
         geocoder.addressSearch(this.state.address, this.showPosition);
-    }
+    };
 
 
     render() {
         return (
             <div>
-                <div id="map" style={{marginBottom: '15px', height: '500px'}}/>
+                <div id="map" style={{marginBottom: '15px', height: '400px'}}/>
             </div>
         )
     };
