@@ -1,13 +1,19 @@
 .tag-cover {
-  margin-top: 15px;
-  display: flex;
+    display: flex;
 }
 
 .input {
-  width: 100%;
-  padding: 15px;
-  outline: none;
-  &.basic {
-    font-size: 17px;
-  }
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    border: none;
+    @media screen and (max-width: 400px) {
+        padding: 12px;
+    }
+    &.basic {
+        font-size: 17px;
+        @media screen and (max-width: 400px) {
+            font-size: 12px;
+        }
+    }
 }

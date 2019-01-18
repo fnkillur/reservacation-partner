@@ -9,7 +9,8 @@ class Map extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            address: this.props.address
+            address: this.props.address,
+            isMobile: window.innerWidth <= 400
         };
     }
 
@@ -66,7 +67,7 @@ class Map extends Component {
     render() {
         return (
             <div>
-                <div id="map" style={{marginBottom: '15px', height: '400px'}}/>
+                <div id="map" style={{ height: this.state.isMobile ? '200px' : '355px', width: this.state.isMobile ? '100%' : '480px'}}/>
             </div>
         )
     };

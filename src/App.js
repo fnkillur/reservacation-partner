@@ -94,7 +94,7 @@ class App extends Component {
                                                 <div className={'description'}>
                                                     위치를 찾을 필요없이
                                                     <br/>
-                                                    전부 Reservacation에서
+                                                    Reservacation에서
                                                     <br/>
                                                     위치제공
                                                 </div>
@@ -122,25 +122,28 @@ class App extends Component {
                                         </div>
                                     </section>
                                     <section className={'section step3'}>
-                                        <form className={'formFields'} onSubmit={this.submit}>
+                                        <article className={'infoSection'}>
                                             {
                                                 !this.state.address ||
-                                                <Map changePosition={position => this.setState({longitude: position[0].x, latitude: position[0].y})} address={this.state.address}/>
+                                                <Map changePosition={position => this.setState({longitude: position[0].x, latitude: position[0].y})}
+                                                     address={this.state.address}/>
                                             }
-                                            {
-                                                this.state.showMe ? <DaumPostcode onComplete={this.handleAddress}/> :
-                                                    <div className={'address-field'} onClick={this.toggleShow}>{this.state.address || '주소입력'}</div>
-                                            }
-                                            {
-                                                !this.state.address ||
-                                                <InputBox onChange={this.onChange} name={'detail_address'} placeholder={'상세주소 입력'}/>
-                                            }
-                                            <InputBox onChange={this.onChange} name={'store_name'} placeholder={'상호명'}/>
-                                            <InputBox onChange={this.onChange} name={'ceo_name'} placeholder={'성함'}/>
-                                            <InputBox onChange={this.onChange} name={'email'} placeholder={'이메일'}/>
-                                            <InputBox onChange={this.onChange} name={'sms'} placeholder={'핸드폰번호'}/>
-                                            <Button type={'submit'} value={'등록'}/>
-                                        </form>
+                                            <form className={`formFields ${this.state.address || 'alone'}`} onSubmit={this.submit}>
+                                                {
+                                                    this.state.showMe ? <DaumPostcode onComplete={this.handleAddress}/> :
+                                                        <div className={'address-field'} onClick={this.toggleShow}>{this.state.address || '주소입력'}</div>
+                                                }
+                                                {
+                                                    !this.state.address ||
+                                                    <InputBox onChange={this.onChange} name={'detail_address'} placeholder={'상세주소 입력'}/>
+                                                }
+                                                <InputBox onChange={this.onChange} name={'store_name'} placeholder={'상호명'}/>
+                                                <InputBox onChange={this.onChange} name={'ceo_name'} placeholder={'성함'}/>
+                                                <InputBox onChange={this.onChange} name={'email'} placeholder={'이메일'}/>
+                                                <InputBox onChange={this.onChange} name={'sms'} placeholder={'핸드폰번호'}/>
+                                                <Button type={'submit'} value={'등록'}/>
+                                            </form>
+                                        </article>
                                         <div className={'footer'}>
                                             Copyright © Reservacation Corp. All rights reserved.
                                         </div>

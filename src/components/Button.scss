@@ -1,18 +1,25 @@
 .button-cover {
-  margin-top: 30px;
 }
 
 .btn {
-  font-size: 17px;
-  cursor: pointer;
-  &.basic {
-    background: #e6e6e6;
-    width: 100%;
-    height: 55px;
-    font-weight: 600;
-    &:hover {
-      background: #000;
-      color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    border: none;
+    @media screen and (max-width: 400px) {
+        font-size: 13px;
     }
-  }
+    &.basic {
+        background: #e6e6e6;
+        width: 100%;
+        height: 55px;
+        font-weight: 600;
+        @media screen and (max-width: 400px) {
+            height: 40px;
+            font-weight: 400;
+        }
+        &:hover {
+            background: #000;
+            color: #fff;
+        }
+    }
 }

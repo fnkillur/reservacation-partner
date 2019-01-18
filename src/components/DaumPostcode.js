@@ -145,7 +145,7 @@ DaumPostcode.defaultProps = {
     autoResize: false,
     defaultQuery: null,
     errorMessage: defaultErrorMessage,
-    height: 400,
+    height: 145,
     hideEngBtn: false,
     hideMapBtn: false,
     maxSuggestItems: 10,
