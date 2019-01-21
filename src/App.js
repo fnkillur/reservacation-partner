@@ -143,10 +143,10 @@ class App extends Component {
                                                 <InputBox onChange={this.onChange} name={'sms'} placeholder={'핸드폰번호'}/>
                                                 <Button type={'submit'} value={'등록'}/>
                                             </form>
+                                            <section className={'footer'}>
+                                                Copyright © Reservacation Corp. All rights reserved.
+                                            </section>
                                         </article>
-                                        <div className={'footer'}>
-                                            Copyright © Reservacation Corp. All rights reserved.
-                                        </div>
                                     </section>
                                 </ReactFullpage.Wrapper>
                             );

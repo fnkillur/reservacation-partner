@@ -67,7 +67,7 @@ class Map extends Component {
     render() {
         return (
             <div>
-                <div id="map" style={{ height: this.state.isMobile ? '200px' : '355px', width: this.state.isMobile ? '100%' : '480px'}}/>
+                <div id="map" style={{ height: this.state.isMobile ? '150px' : '355px', width: this.state.isMobile ? '100%' : '480px'}}/>
             </div>
         )
     };
